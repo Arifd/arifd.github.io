@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+:root {
+  --primary-color: #000000;
+  --main-bg: #ecf0f1;
+  --complimentary-color: #ecf0f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+/* body {
+  background: var(--main-bg);
+} */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+/*   margin-top: 1.5rem;
+  margin-bottom: 1.5rem; */
+}
+
+p {
+  font-size: 1rem;
+}
+
+#header-photo {
+  border: 2px dotted #aaaaaa;
+  border-radius: 100%;
+}
+
+.shadow {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(51,51,51,0.75);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(51,51,51,0.75);
+  box-shadow: 0px 0px 20px 0px rgba(51,51,51,0.75);
+}
+
+/**********************************************/
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color:rgb(48, 48, 48);
+  /* background-image:
+                    url("../assets/top-diagonal.svg"),
+                    url("../assets/bottom-diagonal.svg"),
+                    url("../assets/ARIFDRIESSEN.svg"),
+                    linear-gradient(to bottom, rgb(255,255,255) 0%, rgb(245,249,253) 50%, rgb(255,255,255) 100%);
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-position: top, bottom, top; */
+  }
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  height: 80%;
+  transform: skew(0deg, -5deg);
+  background-color: rgb(247,251,255);
+  background-image:
+    /* url(data:image/png;base64,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); */
+    url("../assets/ARIFDRIESSEN.svg"),
+    linear-gradient(to bottom, white 0%, rgb(247,251,255) 5%, rgb(247,251,255) 95%, white 100%);
+  /* background-position-y: 0px; */
+  box-shadow: 0px 1px 20px 6px #000000,
+  inset 0px 10px 10px -10px rgba(51,51,51,0.5), inset 0px -10px 10px -10px rgba(51,51,51,0.5);
+}
+
+/* section::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/ARIFDRIESSEN.svg");
+} */
+
+/* #home {
+  background-color: #ecf0f1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23CCC' stroke-width='0' %3E%3Crect fill='%23F5F5F5' x='-60' y='-60' width='110' height='240'/%3E%3C/g%3E%3C/svg%3E");
+  background by SVGBackgrounds.com
+  background-attachment: fixed;
+  background-image: url("../assets/ARIFDRIESSEN.svg"), radial-gradient(circle, rgba(255,255,255,1) 20%, rgba(236,240,241,1) 100%);
+} */
+
+/* #fire {
+  background-color: #D64541;
+}
+
+#google-forms-api {
+  background-color: #59ABE3;
+}
+
+#third {
+  background-color: #E08283;
+}
+
+#fourth {
+  background-color: rgb(130, 224, 161);
+} */

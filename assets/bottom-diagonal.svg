@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10">
+   <filter id="inset-shadow" x="-100%" y="-100%" width="200%" height="200%">
+    <feComponentTransfer in="SourceAlpha">
+      <feFuncA type="table" tableValues="1 0" />
+    </feComponentTransfer>
+    <feGaussianBlur stdDeviation="0.5"/>
+    <feOffset dx="1" dy="1" result="offsetblur"/>
+    <feFlood flood-color="#000000" result="color"/>
+    <feComposite in2="offsetblur" operator="in"/>
+    <feComposite in2="SourceAlpha" operator="in" />
+    <feMerge>
+      <feMergeNode in="SourceGraphic" />
+      <feMergeNode />
+    </feMerge>
+  </filter>
+	<polygon fill="#303030" points="0,10 100,0 100,10" filter="url(#inset-shadow)" />
+</svg>

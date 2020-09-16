@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+  <script>
+    // THEATRE CURTAIN PRELOADER
+    function createCurtainCSS(NUMFOLDS) {
+      // draw a preloading Curtain!
+      const parabola = val => Math.pow(4.0 * val * (1.0 - val), 1.0);
+      let curtainCSS = 'background-image: ';
+      // fade to top
+      curtainCSS += 'linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%), ';
+      // generate folds
+      curtainCSS += 'linear-gradient(90deg, rgb(255,0,0) 0%, ';
+      for (let i = 1; i < NUMFOLDS-1; i++) {
+        const random = 1 - parabola(Math.random());
+        const colour = Math.floor(random * 190 + 65);
+        curtainCSS += `rgb(${colour},0,0) ${(100/NUMFOLDS) * i}%, `;
+      }
+      curtainCSS += 'rgb(255,0,0) 100%);';
+      return curtainCSS;
+    }
+
+    // create a container to disable overflow
+    const container = document.createElement('div');
+    container.style.cssText = 'pointer-events: none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100vh;';
+
+    const backdrop = document.createElement('div');
+    backdrop.style.cssText = 'pointer-events: none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100vh;z-index:99;background:#000;';
+    document.body.appendChild(container);
+    container.appendChild(backdrop);
+
+    const curtainLeft = document.createElement('div');
+    curtainLeft.style.cssText = 'position:absolute;top:0;left:0;width:50%;height:100vh;z-index:100;background:#000;';
+    curtainLeft.style.cssText += createCurtainCSS(25);
+    curtainLeft.style.cssText += 'box-shadow:0px 0px 10px 0px rgba(51,51,51,0.75);';
+    container.appendChild(curtainLeft);
+
+    const curtainRight = document.createElement('div');
+    curtainRight.style.cssText = 'position:absolute;top:0;right:0;width:50%;height:100vh;z-index:100;background:#000;';
+    curtainRight.style.cssText += createCurtainCSS(25);
+    curtainRight.style.cssText += 'box-shadow:0px 0px 10px 0px rgba(51,51,51,0.75);'
+    container.appendChild(curtainRight);
+
+    // raise the curtain when ready!
+    window.addEventListener('load',() => {
+      backdrop.style.transition = 'opacity 2s ease-in-out';
+      backdrop.style.opacity = 0;
+      curtainLeft.style.transition = 'all 2s cubic-bezier(0.5,-0.025,0.6,1)';
+      curtainLeft.style.width = 0;
+      curtainLeft.style.transform = `translateX(-${window.innerHeight/8}px)`;
+      curtainRight.style.transition = 'all 2s cubic-bezier(0.5,-0.025,0.6,1)';
+      curtainRight.style.width = 0;
+      curtainRight.style.transform = `translateX(${window.innerHeight/8}px)`;
+    });
+  </script>
+  <!--     <div id="navbar" class="navbar gradient shadow">
+    <span>
+      <p><b>Arif Driessen</b></p>
+      <em style="color: #787878;"><i>Javascript / C++</i></em>
+    </span>
+    <a href="#" class="right">Contact</a>
+    <a href="https://gist.github.com/Arifd" class="right">Gist</a>
+    <a href="#" class="active right">Projects</a>
+  </div> -->
+    <section id="home" class="DONTanimate">
+      <img id="header-photo" class="shadow" src="https://avatars3.githubusercontent.com/u/2345750" alt="Arif Driessen">
+      <br>
+      <h1>Hello. I can make computers do <span id="interesting">interesting</span> things<span id="ender">.</span></h1>
+      <br>
+      <br>
+      <h2 style="color: #787878;">Scroll down for examples.</h2>
+    </section>
+    
+    <section id="fire">
+      <!-- Begin Card -->
+      <div class="card">
+        <iframe class="card-img" data-src="https://arifd.github.io/fire/"></iframe>
+        <div class="card-info">
+          <div class="card-info-main">
+            <div class="title">Fire!</div>
+            <div class="desc fit-text">An experiment in the procedural moddeling of fire both in sound and graphics</div>
+            <div class="feat">
+              <h5>Features:</h5>
+              <ul>
+                <li><b>GPU accelerated</b> graphics rendering (<b>WebGL</b>)</li>
+                <li>Realtime audio snythesis with <b>AudioWorklet</b> and <b>ScriptProcessorNode</b> fallback</li>
+                <li>Written in <b>modern Javascript</b></li>
+              </ul>
+            </div>
+          </div>
+          <a href="https://arifd.github.io/fire/">
+            <div class="card-info-footer">
+              <h3>Visit Site</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- End of Card -->
+    </section>
+
+    <section id="the-fool">
+      <!-- Begin Card -->
+      <div class="card">
+        <iframe class="card-img" data-src="https://arifd.github.io/thefool/" src=""></iframe>
+        <div class="card-info">
+          <div class="card-info-main">
+            <div class="title">The Fool</div>
+            <div class="desc">Art + Tech = Cool</div>
+            <div class="feat">
+              <h5>Features:</h5>
+              <ul>
+                <li>Pseudo 3D</li>
+                <li>Haptic feedback from mouse or accelerometer data (on mobile)</li>
+                <li>Collaboration with an artist to form a simple but beautiful aesthetic</li>
+              </ul>
+            </div>
+          </div>
+          <a href="https://arifd.github.io/thefool/">
+            <div class="card-info-footer">
+              <h3>Visit Site</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- End of Card -->
+    </section>
+    
+    <section id="google-forms-api">
+      <!-- Begin Card -->
+      <div class="card">
+        <iframe class="card-img" data-src="https://arifd.github.io/UIMPThursdayEvalsOptimiser/" src=""></iframe>
+        <div class="card-info">
+          <div class="card-info-main">
+            <div class="title">Custom Google Forms</div>
+            <div class="desc fit-text">A custom front-end to Google Forms for speed, optimisation, branding and personalisation</div>
+            <div class="feat">
+              <h5>Features:</h5>
+              <ul>
+                <li>Allows the user to use Google Forms without knowing</li>
+                <li>Built in order to add features without altering any of the company's interal ifrastructure.</li>
+                <li>Convincing natural language comment generator</li>
+              </ul>
+            </div>
+          </div>
+          <a href="https://arifd.github.io/UIMPThursdayEvalsOptimiser/">
+            <div class="card-info-footer">
+              <h3>Visit Site</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- End of Card -->
+    </section>
+
+    <section id="rng-console-app">
+      <!-- Begin Card -->
+      <div class="card">
+        <img class="card-img" src="https://www.iconfinder.com/data/icons/eldorado-multimedia/40/terminal_application-512.png"/>
+        <div class="card-info">
+          <div class="card-info-main">
+            <div class="title">Random Number Generator Tester</div>
+            <div class="desc fit-text">A console application to test different implementations of RNGs for speed</div>
+            <div class="feat">
+              <h5>Features:</h5>
+              <ul>
+                <li>Built with the JUCE audio framework</li>
+                <li>compares: Linear congruential generator, Xorshift, Marsenne-Twister, Taus88, std::rand(), std::mt19937, JUCE Random</li>
+                <li>Written in C++</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-info-footer">
+            <h3>Visit Site</h3>
+          </div>
+        </div>
+      </div>
+      <!-- End of Card -->
+    </section>
+
+    <section id="end">
+      <p>This entire site was coded by me. No external libraries used</p>
+    </section>
+ 
+</body>
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/fit-text.js"></script>
+<script type="module" src="js/snappy-scroll/index.mjs"></script>
+</html>
